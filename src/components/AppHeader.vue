@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="header">
     <p class="logo">devfinder</p>
-    <button>dark</button>
+    <button class="ThemeButton">dark</button>
   </div>
 </template>
 <script>
