@@ -1,7 +1,8 @@
 @import "./variables.scss";
 
 * {
-    margin: 0
+    margin: 0;
+    text-decoration: none;
 }
 
 body {
@@ -13,11 +14,16 @@ body {
     font-family: $font;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: $almostwhite;
     box-sizing: border-box;
     height: 100vh;
-    padding: 24px;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: all 0.2s ease
 }
+
+.dark {
+  background-color: $almostdark;
+    color: #e8e8e8;
+  }

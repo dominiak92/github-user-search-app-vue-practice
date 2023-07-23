@@ -1,38 +1,65 @@
 <template>
-  <div class="searchBarWrapper">
+  <div class="searchBarWrapper" :class="mode">
     <font-awesome-icon class="icon" icon="fa-solid fa-magnifying-glass" />
-    <v-text-field
-      label="Main input"
-      :rules="rules"
-      hide-details="auto"
-    ></v-text-field>
-    <v-btn class="searchButton" rounded color="#0079FF" dark> Search </v-btn>
+    <div>
+      <v-text-field
+        v-model="inputUsername"
+        class="pa-2"
+        label="Search GitHub username.."
+        :rules="rules"
+        :class="mode"
+        hide-details="auto"
+        @keyup.enter="handleEnterKey"
+      ></v-text-field>
+    </div>
+    <v-btn
+      :disabled="inputUsername.length === 0 || inputUsername.length > 39"
+      class="searchButton"
+      rounded
+      color="#0079FF"
+      @click="handleSearch"
+    >
+      Search
+    </v-btn>
   </div>
 </template>
 <script>
 export default {
   name: 'SearchBar',
   props: {
-    type: {
+    value: {
       type: String,
-      default: 'text', // Jeśli nie podasz typu, domyślnie będzie to pole tekstowe
+      default: '',
     },
-    placeholder: {
+    mode: {
       type: String,
-      default: '', // Domyślnie nie będzie placeholdera
+      required: true,
     },
   },
-  data: () => ({
+  data() {
+    return {
+      inputUsername: '',
       rules: [
-        value => !!value || 'Required.',
-        value => (value && value.length >= 3) || 'Min 3 characters',
+        (value) => value === '' || !!value || 'Required.',
+        (value) => value === '' || value.length <= 39 || 'Max 39 characters',
       ],
-    }),
+    };
+  },
+  methods: {
+    handleSearch() {
+      this.$emit('searchUsername', this.inputUsername.trim().toLowerCase());
+      this.inputUsername = '';
+    },
+    handleEnterKey() {
+      if (this.inputUsername.length > 0) {
+        this.handleSearch();
+      }
+    },
+  },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../scss/variables.scss';
-
 .searchBarWrapper {
   border-radius: 15px;
   background: $whitestalmostwhite;
@@ -44,13 +71,8 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 3vw;
-  .searchInput {
-    width: 54vw;
-    font-size: 0.8rem;
-    margin-right: auto;
-    :active {
-      border: none;  
-    }
+  .v-text-field ::v-deep label {
+    font-size: 0.73em;
   }
   .icon {
     font-size: 20px;
@@ -62,6 +84,16 @@ export default {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+  }
+}
+.dark {
+  background-color: $darkdarkviolet;
+  color: #e8e8e8;
+  .v-text-field ::v-deep label {
+    color: #e8e8e8;
+  }
+  .v-text-field ::v-deep .v-text-field__slot input {
+    color: $almostwhite;
   }
 }
 </style>
