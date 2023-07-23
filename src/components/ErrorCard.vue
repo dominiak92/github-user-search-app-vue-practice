@@ -17,6 +17,10 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+@import '../scss/variables.scss';
+@import '../scss/mixins.scss';
+@import '../scss/breakpoints.scss';
+
 .errorCardWrapper {
   border-radius: 15px;
   background-color: #fefefe;
@@ -29,17 +33,32 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  @include md {
+    margin-top: 3vw;
+    padding: 3vw;
+    width: 55vw;
+  }
   .errorTitle {
     font-size: 6vw;
     margin: 3vw;
+    @include md {
+      font-size: 3vw;
+    }
   }
   .errorInfo {
     text-align: center;
+    @include md {
+      font-size: 1.5vw;
+    }
   }
   .icon {
     font-size: 10vw;
     color: $darkviolet;
     margin: 3vw;
+    @include md {
+      font-size: 5vw;
+      margin: 2vw;
+    }
   }
 }
 .dark {

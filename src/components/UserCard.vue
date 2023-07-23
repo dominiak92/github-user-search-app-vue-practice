@@ -90,6 +90,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import '../scss/variables.scss';
+@import '../scss/mixins.scss';
+@import '../scss/breakpoints.scss';
 .userCardWrapper {
   border-radius: 15px;
   background-color: $whitestalmostwhite;
@@ -99,13 +101,30 @@ export default {
   padding: 6vw;
   flex-shrink: 0;
   transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @include md {
+    margin-top: 3vw;
+    padding: 3vw;
+    width: 55vw;
+  }
   .userTopInfo {
     display: flex;
     margin-top: 1.5vw;
+    @include md {
+      margin-top: 0;
+      align-self: flex-start;
+    }
     .avatarImg {
       width: 16.5vw;
       height: 16.5vw;
       border-radius: 16.5vw;
+      @include md {
+        width: 10vw;
+        height: 10vw;
+      }
     }
     .nameLoginCreated {
       display: flex;
@@ -118,17 +137,26 @@ export default {
           font-weight: 700;
           line-height: normal;
           margin: 0;
+          @include md {
+            font-size: 2.4vw;
+          }
         }
         .login {
           color: $violetblue;
           font-size: 3.4vw;
           margin: 0;
+          @include md {
+            font-size: 2vw;
+          }
         }
       }
       .created {
         color: $violetgray;
         margin-top: 6px;
         font-size: 3.4vw;
+        @include md {
+            font-size: 2vw;
+          }
       }
     }
   }
@@ -136,6 +164,9 @@ export default {
     margin-top: 4vw;
     margin-bottom: 3vw;
     color: $violetgray;
+    @include md {
+      margin-top: 2vw;
+    }
   }
   .repoFollowers {
     display: flex;
@@ -147,6 +178,10 @@ export default {
     background-color: $almostwhite;
     padding: 2vw;
     transition: all 0.2s ease;
+    @include md {
+      width: 49vw;
+      height: 10vw;
+    }
     .repoInfo {
       display: flex;
       flex-direction: column;
@@ -156,21 +191,35 @@ export default {
         font-size: 3vw;
         color: $darkviolet;
         margin: 0;
+        @include md {
+          font-size: 1.5vw;
+        }
       }
       .repoData {
         margin: 0;
         margin-top: 2.5vw;
         font-size: 5vw;
         font-weight: 700;
+        @include md{
+          margin-top: 1vw;
+          font-size: 2.5vw;
+        }
       }
     }
   }
   .informationsWrapper {
     margin-top: 5vw;
+    @include md{
+      margin-top: 2vw;
+      align-self: flex-start;
+    }
     .information {
       display: flex;
       align-items: center;
       margin-bottom: 2vw;
+      @include md {
+        margin-bottom: 1vw;
+      }
 
       .iconWrapper {
         width: 7vw;
@@ -178,10 +227,18 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+        @include md{
+          width: 3.3vw;
+          height: 3.3vw;
+        }
         .icon {
           color: $darkviolet;
           font-size: 5vw;
           margin-right: 2vw;
+          @include md {
+            font-size: 2vw;
+            margin-right: 0;
+          }
         }
       }
 
@@ -189,6 +246,9 @@ export default {
         margin: 0;
         color: $darkviolet;
         font-size: 4vw;
+        @include md {
+          font-size: 1.5vw;
+        }
       }
     }
   }

@@ -60,6 +60,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import '../scss/variables.scss';
+@import '../scss/mixins.scss';
+@import '../scss/breakpoints.scss';
 .searchBarWrapper {
   border-radius: 15px;
   background: $whitestalmostwhite;
@@ -71,6 +73,9 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 3vw;
+  @include md {
+    width: 55vw;
+  }
   .v-text-field ::v-deep label {
     font-size: 0.73em;
   }
@@ -94,6 +99,11 @@ export default {
   }
   .v-text-field ::v-deep .v-text-field__slot input {
     color: $almostwhite;
+  }
+}
+.light {
+  .v-text-field ::v-deep .v-text-field__slot input {
+    background-color: $whitestalmostwhite;
   }
 }
 </style>

@@ -1,11 +1,13 @@
 <template>
   <v-app>
     <div id="app" :class="mode">
-      <AppHeader :mode="mode" @toggle="toggle"/>
-      <SearchBar :mode="mode" @searchUsername="handleSearch" />
-      <SkeletonCard v-if="loading"/>
-      <ErrorCard v-if="error" :mode="mode"/>
-      <UserCard v-else-if="!loading" :user-details="usernameData" :mode="mode" />
+      <div class="appWrapper">
+        <AppHeader :mode="mode" @toggle="toggle" />
+        <SearchBar :mode="mode" @searchUsername="handleSearch" />
+        <SkeletonCard v-if="loading" />
+        <ErrorCard v-if="error" :mode="mode" />
+        <UserCard v-else-if="!loading" :user-details="usernameData" :mode="mode" />
+      </div>
     </div>
   </v-app>
 </template>
@@ -16,7 +18,7 @@ import AppHeader from './components/AppHeader.vue';
 import SearchBar from './components/SearchBar.vue';
 import UserCard from './components/UserCard.vue';
 import ErrorCard from './components/ErrorCard.vue';
-import SkeletonCard from './components/SkeletonCard.vue'
+import SkeletonCard from './components/SkeletonCard.vue';
 
 export default {
   name: 'App',
@@ -25,14 +27,14 @@ export default {
     SearchBar,
     UserCard,
     ErrorCard,
-    SkeletonCard
+    SkeletonCard,
   },
   data() {
     return {
       usernameData: {},
       error: false,
       loading: true,
-      mode: 'light'
+      mode: 'light',
     };
   },
   created() {
@@ -54,14 +56,50 @@ export default {
         });
     },
     toggle() {
-      if (this.mode === "dark") {
-        this.mode = "light";
+      if (this.mode === 'dark') {
+        this.mode = 'light';
       } else {
-        this.mode = "dark";
+        this.mode = 'dark';
       }
     },
   },
 };
 </script>
 
-<style lang="scss" src="./scss/App.scss"></style>
+<style lang="scss">
+@import './scss/variables.scss';
+@import './scss/mixins.scss';
+@import './scss/breakpoints.scss';
+
+* {
+  margin: 0;
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  font-family: $font;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.2s ease;
+.appWrapper {
+  @include md {
+    width: 55vw;
+  }
+}
+}
+.dark {
+  background-color: $almostdark;
+  color: $almostwhite;
+}
+</style>
