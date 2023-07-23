@@ -75,9 +75,23 @@ export default {
   padding: 3vw;
   @include md {
     width: 55vw;
+    padding: 3vw;
+  }
+  @include xl {
+    width: 35vw;
+    height: 4.3vw;
+    padding: 1vw;
+    justify-content: space-between;
   }
   .v-text-field ::v-deep label {
     font-size: 0.73em;
+  }
+  .v-text-field {
+    margin-right: auto;
+    margin-left: 0;
+    @include xl {
+      width: 20vw;
+    }
   }
   .icon {
     font-size: 20px;
@@ -102,6 +116,7 @@ export default {
   }
 }
 .light {
+  background-color: $whitestalmostwhite;
   .v-text-field ::v-deep .v-text-field__slot input {
     background-color: $whitestalmostwhite;
   }

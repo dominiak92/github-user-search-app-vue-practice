@@ -21,12 +21,18 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+@import '../scss/variables.scss';
+@import '../scss/mixins.scss';
+@import '../scss/breakpoints.scss';
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 4vw;
   width: 100%;
+  @include xl {
+    padding: 1vw;
+  }
   .logo {
     font-size: 26px;
     font-weight: 700;

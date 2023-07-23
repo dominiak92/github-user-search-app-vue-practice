@@ -38,17 +38,29 @@ export default {
     padding: 3vw;
     width: 55vw;
   }
+  @include xl {
+    margin-top: 1.5vw;
+    width: 35vw;
+    padding: 2vw;
+  }
   .errorTitle {
     font-size: 6vw;
     margin: 3vw;
     @include md {
       font-size: 3vw;
     }
+    @include xl {
+      font-size: 2vw;
+      margin: 2vw;
+    }
   }
   .errorInfo {
     text-align: center;
     @include md {
       font-size: 1.5vw;
+    }
+    @include xl {
+      font-size: 1vw;
     }
   }
   .icon {

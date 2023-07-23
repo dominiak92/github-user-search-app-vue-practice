@@ -4,9 +4,9 @@
       <div class="appWrapper">
         <AppHeader :mode="mode" @toggle="toggle" />
         <SearchBar :mode="mode" @searchUsername="handleSearch" />
-        <SkeletonCard v-if="loading" />
+        <!-- <SkeletonCard v-if="loading" /> -->
         <ErrorCard v-if="error" :mode="mode" />
-        <UserCard v-else-if="!loading" :user-details="usernameData" :mode="mode" />
+        <UserCard v-else :user-details="usernameData" :loading="loading" :mode="mode" />
       </div>
     </div>
   </v-app>
@@ -18,7 +18,6 @@ import AppHeader from './components/AppHeader.vue';
 import SearchBar from './components/SearchBar.vue';
 import UserCard from './components/UserCard.vue';
 import ErrorCard from './components/ErrorCard.vue';
-import SkeletonCard from './components/SkeletonCard.vue';
 
 export default {
   name: 'App',
@@ -27,7 +26,6 @@ export default {
     SearchBar,
     UserCard,
     ErrorCard,
-    SkeletonCard,
   },
   data() {
     return {
@@ -96,10 +94,17 @@ body {
   @include md {
     width: 55vw;
   }
+  @include xl {
+    width: 35vw;
+  }
+
 }
 }
 .dark {
   background-color: $almostdark;
   color: $almostwhite;
+}
+.light {
+  background-color: $almostwhite;
 }
 </style>
