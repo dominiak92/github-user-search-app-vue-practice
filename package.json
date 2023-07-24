@@ -2,9 +2,10 @@
   "name": "github-user-search-app-vue-practice",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://dominiak92.github.io/github-user-search-app-vue-practice/",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --mode production",
     "lint": "eslint . --ext .js,.vue",
     "format": "prettier --write \"**/*.+(js|json|vue)\"",
     "lint:fix": "eslint . --ext .js,.vue --fix",
